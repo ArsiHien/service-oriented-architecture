@@ -1,0 +1,19 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package order;
+
+service OrderService {
+  rpc CalculateTotalPrice (OrderRequest) returns (OrderResponse);
+}
+
+message OrderRequest {
+  string productId = 1;
+  int32 quantity = 2;
+}
+
+message OrderResponse {
+  string productId = 1;
+  double unitPrice = 2;
+  int32 quantity = 3;
+  double totalPrice = 4;
+}
