@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ApacheThrift.iml" filepath="$PROJECT_DIR$/ApacheThrift.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Homework1.iml" filepath="$PROJECT_DIR$/.idea/Homework1.iml" />
       <module fileurl="file://$PROJECT_DIR$/gRPCJava/gRPCJava.iml" filepath="$PROJECT_DIR$/gRPCJava/gRPCJava.iml" />
       <module fileurl="file://$PROJECT_DIR$/gRPCTest.iml" filepath="$PROJECT_DIR$/gRPCTest.iml" />

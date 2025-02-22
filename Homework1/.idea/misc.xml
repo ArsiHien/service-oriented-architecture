@@ -6,6 +6,8 @@
       <list>
         <option value="$PROJECT_DIR$/gRPCJava/pom.xml" />
         <option value="$PROJECT_DIR$/gRPCTest/pom.xml" />
+        <option value="$PROJECT_DIR$/ApacheThrift/pom.xml" />
+        <option value="$PROJECT_DIR$/JavaRMI/pom.xml" />
       </list>
     </option>
   </component>
