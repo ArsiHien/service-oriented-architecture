@@ -1,3 +1,5 @@
+package server;
+
 import order.OrderService;
 import org.apache.thrift.server.TThreadPoolServer;
 import org.apache.thrift.transport.TServerSocket;
