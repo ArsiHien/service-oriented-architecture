@@ -1,15 +1,15 @@
 namespace java order
 
-service OrderService {
-  OrderResponse CalculateTotalPrice(1: OrderRequest request)
+service order.OrderService {
+  order.OrderResponse CalculateTotalPrice(1: order.OrderRequest request)
 }
 
-struct OrderRequest {
+struct order.OrderRequest {
   1: string productId
   2: i32 quantity
 }
 
-struct OrderResponse {
+struct order.OrderResponse {
   1: string productId
   2: double unitPrice
   3: i32 quantity
