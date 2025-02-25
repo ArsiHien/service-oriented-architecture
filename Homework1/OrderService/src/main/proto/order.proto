@@ -1,0 +1,16 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package order_grpc;
+
+service OrderService {
+  rpc CalculateTotalPrice (ProductRequest) returns (ProductResponse);
+}
+
+message ProductRequest {
+  string productId = 1;
+  int32 quantity = 2;
+}
+
+message ProductResponse {
+  double totalPrice = 1;
+}
