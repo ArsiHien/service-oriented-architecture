@@ -1,6 +1,4 @@
-package infrastructure.javarmi;
-
-import application.ProductRequestDto;
+package javarmi;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

@@ -102,11 +102,11 @@
             <artifactId>guava</artifactId>
             <version>32.0.1-jre</version>
         </dependency>
+
         <dependency>
             <groupId>soa</groupId>
-            <artifactId>JavaRMI</artifactId>
+            <artifactId>order-api</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 

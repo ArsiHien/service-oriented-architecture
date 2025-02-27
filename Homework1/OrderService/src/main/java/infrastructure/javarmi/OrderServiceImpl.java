@@ -1,14 +1,17 @@
 package infrastructure.javarmi;
 
 import application.CalculateTotalPriceUseCase;
-import application.ProductRequestDto;
+import javarmi.OrderService;
+import javarmi.ProductRequestDto;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 
-public class OrderServiceImpl implements OrderService {
+public class OrderServiceImpl extends UnicastRemoteObject implements OrderService {
     private final CalculateTotalPriceUseCase useCase;
 
-    public OrderServiceImpl(CalculateTotalPriceUseCase useCase) {
+    public OrderServiceImpl(CalculateTotalPriceUseCase useCase) throws RemoteException {
+        super();
         this.useCase = useCase;
     }
 

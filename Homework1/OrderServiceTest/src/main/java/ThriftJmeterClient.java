@@ -1,5 +1,6 @@
 import order_thrift.OrderService;
 import order_thrift.ProductRequest;
+import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
@@ -21,6 +22,14 @@ public class ThriftJmeterClient extends AbstractJavaSamplerClient {
         } catch (TTransportException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public Arguments getDefaultParameters() {
+        Arguments arguments = new Arguments();
+        arguments.addArgument("productId", "c0638aeb-efa7-11ef-9573-005056c00001");
+        arguments.addArgument("quantity", "123");
+        return arguments;
     }
 
     @Override

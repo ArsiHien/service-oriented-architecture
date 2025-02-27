@@ -2,6 +2,7 @@ package infrastructure.javarmi;
 
 import application.CalculateTotalPriceUseCase;
 import infrastructure.JdbcProductRepository;
+import javarmi.OrderService;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;

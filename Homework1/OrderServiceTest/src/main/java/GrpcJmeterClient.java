@@ -25,7 +25,7 @@ public class GrpcJmeterClient extends AbstractJavaSamplerClient {
     @Override
     public Arguments getDefaultParameters() {
         Arguments arguments = new Arguments();
-        arguments.addArgument("productId", "abc");
+        arguments.addArgument("productId", "c0638aeb-efa7-11ef-9573-005056c00001");
         arguments.addArgument("quantity", "123");
         return arguments;
     }
