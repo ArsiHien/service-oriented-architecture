@@ -10,4 +10,16 @@ begin
 end $$
 delimiter ;
 
-call generate_data()
+call generate_data();
+
+# Export product Id to csv
+SELECT o.id
+FROM `order`.orders AS o
+INTO OUTFILE 'C:/ProgramData/MySQL/MySQL Server 8.1/Uploads/productId.csv'
+    FIELDS TERMINATED BY ','
+    ENCLOSED BY '"'
+    LINES TERMINATED BY '\n';
+select * from orders where id = "c087f3a3-efa7-11ef-9573-005056c00001";
+
+
+

@@ -1,16 +1,18 @@
 import javarmi.OrderService;
 import javarmi.ProductRequestDto;
-import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
 
+import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Random;
 
 public class JavaRmiJmeterClient extends AbstractJavaSamplerClient {
 
     private OrderService orderService;
+    private static CsvHelper csvHelper;
 
     @Override
     public void setupTest(JavaSamplerContext context) {
@@ -18,17 +20,17 @@ public class JavaRmiJmeterClient extends AbstractJavaSamplerClient {
             Registry registry = LocateRegistry.getRegistry("localhost", 1099);
             orderService = (OrderService) registry.lookup("orderService");
             System.out.println("Connected to RMI server successfully.");
+
+            if (csvHelper == null) {
+                try {
+                    csvHelper = new CsvHelper("productId.csv");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         } catch (Exception e) {
             throw new RuntimeException("Failed to connect to RMI server: " + e.getMessage(), e);
         }
-    }
-
-    @Override
-    public Arguments getDefaultParameters() {
-        Arguments arguments = new Arguments();
-        arguments.addArgument("productId", "c0638aeb-efa7-11ef-9573-005056c00001");
-        arguments.addArgument("quantity", "2");
-        return arguments;
     }
 
     @Override
@@ -37,8 +39,8 @@ public class JavaRmiJmeterClient extends AbstractJavaSamplerClient {
         result.sampleStart();
 
         try {
-            String productId = context.getParameter("productId");
-            int quantity = Integer.parseInt(context.getParameter("quantity"));
+            String productId = csvHelper.getNextId();
+            int quantity = new Random().nextInt(100) + 1;
 
             ProductRequestDto request = new ProductRequestDto(productId, quantity);
             double totalPrice = orderService.calculateTotalPrice(request);

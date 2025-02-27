@@ -18,56 +18,23 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="JavaRMI">
+        <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="JavaRMI" enabled="true">
           <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="productId" elementType="Argument">
-                <stringProp name="Argument.name">productId</stringProp>
-                <stringProp name="Argument.value">c0638aeb-efa7-11ef-9573-005056c00001</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="quantity" elementType="Argument">
-                <stringProp name="Argument.name">quantity</stringProp>
-                <stringProp name="Argument.value">1</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
+            <collectionProp name="Arguments.arguments"/>
           </elementProp>
           <stringProp name="classname">JavaRmiJmeterClient</stringProp>
         </JavaSampler>
         <hashTree/>
         <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="Thrift" enabled="true">
           <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="productId" elementType="Argument">
-                <stringProp name="Argument.name">productId</stringProp>
-                <stringProp name="Argument.value">c0638aeb-efa7-11ef-9573-005056c00001</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="quantity" elementType="Argument">
-                <stringProp name="Argument.name">quantity</stringProp>
-                <stringProp name="Argument.value">123</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
+            <collectionProp name="Arguments.arguments"/>
           </elementProp>
           <stringProp name="classname">ThriftJmeterClient</stringProp>
         </JavaSampler>
         <hashTree/>
-        <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="gRPC">
+        <JavaSampler guiclass="JavaTestSamplerGui" testclass="JavaSampler" testname="gRPC" enabled="true">
           <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="productId" elementType="Argument">
-                <stringProp name="Argument.name">productId</stringProp>
-                <stringProp name="Argument.value">c0638aeb-efa7-11ef-9573-005056c00001</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-              <elementProp name="quantity" elementType="Argument">
-                <stringProp name="Argument.name">quantity</stringProp>
-                <stringProp name="Argument.value">123</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
+            <collectionProp name="Arguments.arguments"/>
           </elementProp>
           <stringProp name="classname">GrpcJmeterClient</stringProp>
         </JavaSampler>

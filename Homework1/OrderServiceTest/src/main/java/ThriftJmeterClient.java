@@ -1,6 +1,5 @@
 import order_thrift.OrderService;
 import order_thrift.ProductRequest;
-import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
@@ -11,25 +10,28 @@ import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 
+import java.io.IOException;
+import java.util.Random;
+
 public class ThriftJmeterClient extends AbstractJavaSamplerClient {
     private TTransport transport;
+    private static CsvHelper csvHelper;
 
     @Override
     public void setupTest(JavaSamplerContext context) {
         super.setupTest(context);
         try {
             transport = new TSocket("localhost", 8888);
+            if (csvHelper == null) {
+                try {
+                    csvHelper = new CsvHelper("productId.csv");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
         } catch (TTransportException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public Arguments getDefaultParameters() {
-        Arguments arguments = new Arguments();
-        arguments.addArgument("productId", "c0638aeb-efa7-11ef-9573-005056c00001");
-        arguments.addArgument("quantity", "123");
-        return arguments;
     }
 
     @Override
@@ -39,12 +41,11 @@ public class ThriftJmeterClient extends AbstractJavaSamplerClient {
 
         try {
             transport.open();
-
             TProtocol protocol = new TBinaryProtocol(transport);
             OrderService.Client client = new OrderService.Client(protocol);
 
-            String productId = context.getParameter("productId", "default_id");
-            int quantity = context.getIntParameter("quantity", 1);
+            String productId = csvHelper.getNextId();
+            int quantity = new Random().nextInt(100) + 1;
 
             ProductRequest request = new ProductRequest(productId, quantity);
             double totalPrice = client.CalculateTotalPrice(request);

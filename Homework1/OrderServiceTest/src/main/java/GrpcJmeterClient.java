@@ -3,14 +3,17 @@ import io.grpc.ManagedChannelBuilder;
 import order_grpc.OrderServiceGrpc;
 import order_grpc.ProductRequest;
 import order_grpc.ProductResponse;
-import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
 
+import java.io.IOException;
+import java.util.Random;
+
 public class GrpcJmeterClient extends AbstractJavaSamplerClient {
     private ManagedChannel channel;
     private OrderServiceGrpc.OrderServiceBlockingStub stub;
+    private static CsvHelper csvHelper;
 
     @Override
     public void setupTest(JavaSamplerContext context) {
@@ -18,16 +21,17 @@ public class GrpcJmeterClient extends AbstractJavaSamplerClient {
         channel = ManagedChannelBuilder.forAddress("localhost", 50051)
                 .usePlaintext()
                 .build();
+
+        if (csvHelper == null) {
+            try {
+                csvHelper = new CsvHelper("productId.csv");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
         stub = OrderServiceGrpc.newBlockingStub(channel);
         System.out.println("Connected to server");
-    }
-
-    @Override
-    public Arguments getDefaultParameters() {
-        Arguments arguments = new Arguments();
-        arguments.addArgument("productId", "c0638aeb-efa7-11ef-9573-005056c00001");
-        arguments.addArgument("quantity", "123");
-        return arguments;
     }
 
     @Override
@@ -36,11 +40,10 @@ public class GrpcJmeterClient extends AbstractJavaSamplerClient {
         result.sampleStart();
 
         try {
-            String productId = javaSamplerContext.getParameter("productId");
-            int quantity = Integer.parseInt(javaSamplerContext.getParameter("quantity"));
+            String productId = csvHelper.getNextId();
+            int quantity = new Random().nextInt(100) + 1;
 
             ProductRequest request = ProductRequest.newBuilder().setProductId(productId).setQuantity(quantity).build();
-
             ProductResponse response = stub.calculateTotalPrice(request);
 
             result.setResponseData("Total Price: " + response.getTotalPrice(), "UTF-8");
