@@ -1,17 +1,9 @@
-version: "3.8"
-
 services:
   mysql:
     image: mysql:8.0
     container_name: mysql_db
     restart: always
-    env_file:
-      - .env
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    env_file: .env
     ports:
       - "3306:3306"
     volumes:
@@ -21,7 +13,6 @@ services:
     build: .
     container_name: grpc_server
     environment:
-      - SERVER_MODE=grpc
       - DB_HOST=mysql
       - DB_PORT=3306
       - DB_NAME=${MYSQL_DATABASE}
@@ -31,7 +22,37 @@ services:
       - mysql
     ports:
       - "50051:50051"
+    command: ["grpc"]  # Override CMD in Dockerfile
     restart: always
 
-volumes:
-  mysql_data:
+  rmi-server:
+    build: .
+    container_name: rmi_server
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=${MYSQL_DATABASE}
+      - DB_USER=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+    depends_on:
+      - mysql
+    ports:
+      - "1099:1099"
+    command: ["rmi"]  # Override CMD in Dockerfile
+    restart: always
+
+  thrift-server:
+    build: .
+    container_name: thrift_server
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_NAME=${MYSQL_DATABASE}
+      - DB_USER=${MYSQL_USER}
+      - DB_PASSWORD=${MYSQL_PASSWORD}
+    depends_on:
+      - mysql
+    ports:
+      - "9090:9090"
+    command: ["thrift"]  # Override CMD in Dockerfile
+    restart: always
