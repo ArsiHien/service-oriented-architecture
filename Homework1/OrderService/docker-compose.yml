@@ -4,6 +4,11 @@ services:
     container_name: mysql_db
     restart: always
     env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
     volumes:
@@ -22,7 +27,8 @@ services:
       - mysql
     ports:
       - "50051:50051"
-    command: ["grpc"]  # Override CMD in Dockerfile
+    environment:
+      - SERVER_MODE=grpc
     restart: always
 
   rmi-server:
@@ -38,7 +44,8 @@ services:
       - mysql
     ports:
       - "1099:1099"
-    command: ["rmi"]  # Override CMD in Dockerfile
+    environment:
+      - SERVER_MODE=rmi
     restart: always
 
   thrift-server:
@@ -54,5 +61,9 @@ services:
       - mysql
     ports:
       - "9090:9090"
-    command: ["thrift"]  # Override CMD in Dockerfile
+    environment:
+      - SERVER_MODE=thrift
     restart: always
+  
+volumes:
+  mysql_data:
