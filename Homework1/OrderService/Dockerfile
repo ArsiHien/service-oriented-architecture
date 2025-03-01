@@ -21,7 +21,6 @@ RUN apt update && apt install -y wget \
 COPY pom.xml ./
 RUN mvn dependency:go-offline
 
-COPY .env /app/.env
 COPY src ./src
 RUN mvn clean package -DskipTests
 
@@ -30,4 +29,5 @@ FROM openjdk:21-jdk-slim
 WORKDIR /app
 COPY --from=builder /app/target/OrderService-1.0-SNAPSHOT.jar OrderService-1.0-SNAPSHOT.jar
 
+COPY .env /app/.env
 ENTRYPOINT ["java", "-jar", "OrderService-1.0-SNAPSHOT.jar", "Main"]
