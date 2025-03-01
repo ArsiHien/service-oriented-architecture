@@ -21,10 +21,10 @@ public class ThriftJmeterClient extends AbstractJavaSamplerClient {
     public void setupTest(JavaSamplerContext context) {
         super.setupTest(context);
         try {
-            transport = new TSocket("localhost", 8888);
+            transport = new TSocket(Const.SERVER, 8888);
             if (csvHelper == null) {
                 try {
-                    csvHelper = new CsvHelper("productId.csv");
+                    csvHelper = new CsvHelper(Const.FILENAME);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

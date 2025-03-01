@@ -18,13 +18,13 @@ public class GrpcJmeterClient extends AbstractJavaSamplerClient {
     @Override
     public void setupTest(JavaSamplerContext context) {
         super.setupTest(context);
-        channel = ManagedChannelBuilder.forAddress("localhost", 50051)
+        channel = ManagedChannelBuilder.forAddress(Const.SERVER, 50051)
                 .usePlaintext()
                 .build();
 
         if (csvHelper == null) {
             try {
-                csvHelper = new CsvHelper("productId.csv");
+                csvHelper = new CsvHelper(Const.FILENAME);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

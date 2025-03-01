@@ -17,13 +17,13 @@ public class JavaRmiJmeterClient extends AbstractJavaSamplerClient {
     @Override
     public void setupTest(JavaSamplerContext context) {
         try {
-            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+            Registry registry = LocateRegistry.getRegistry(Const.SERVER, 1099);
             orderService = (OrderService) registry.lookup("orderService");
             System.out.println("Connected to RMI server successfully.");
 
             if (csvHelper == null) {
                 try {
-                    csvHelper = new CsvHelper("productId.csv");
+                    csvHelper = new CsvHelper(Const.FILENAME);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
