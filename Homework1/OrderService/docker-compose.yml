@@ -23,12 +23,11 @@ services:
       - DB_NAME=${MYSQL_DATABASE}
       - DB_USER=${MYSQL_USER}
       - DB_PASSWORD=${MYSQL_PASSWORD}
+      - SERVER_MODE=grpc
     depends_on:
       - mysql
     ports:
       - "50051:50051"
-    environment:
-      - SERVER_MODE=grpc
     restart: always
 
   rmi-server:
@@ -40,12 +39,11 @@ services:
       - DB_NAME=${MYSQL_DATABASE}
       - DB_USER=${MYSQL_USER}
       - DB_PASSWORD=${MYSQL_PASSWORD}
+      - SERVER_MODE=rmi
     depends_on:
       - mysql
     ports:
       - "1099:1099"
-    environment:
-      - SERVER_MODE=rmi
     restart: always
 
   thrift-server:
@@ -57,12 +55,11 @@ services:
       - DB_NAME=${MYSQL_DATABASE}
       - DB_USER=${MYSQL_USER}
       - DB_PASSWORD=${MYSQL_PASSWORD}
+      - SERVER_MODE=thrift
     depends_on:
       - mysql
     ports:
       - "9090:9090"
-    environment:
-      - SERVER_MODE=thrift
     restart: always
   
 volumes:
