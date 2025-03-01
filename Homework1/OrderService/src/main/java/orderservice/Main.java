@@ -1,3 +1,5 @@
+package orderservice;
+
 import infrastructure.grpc.OrderGrpcServer;
 import infrastructure.javarmi.OrderRmiServer;
 import infrastructure.thrift.OrderThriftServer;
