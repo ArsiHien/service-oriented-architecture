@@ -17,6 +17,7 @@ services:
   grpc-server:
     build: .
     container_name: grpc_server
+    env_file: .env
     environment:
       - DB_HOST=mysql
       - DB_PORT=3306
@@ -33,6 +34,7 @@ services:
   rmi-server:
     build: .
     container_name: rmi_server
+    env_file: .env
     environment:
       - DB_HOST=mysql
       - DB_PORT=3306
@@ -49,6 +51,7 @@ services:
   thrift-server:
     build: .
     container_name: thrift_server
+    env_file: .env
     environment:
       - DB_HOST=mysql
       - DB_PORT=3306

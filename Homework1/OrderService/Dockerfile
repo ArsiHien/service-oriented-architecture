@@ -21,6 +21,7 @@ RUN apt update && apt install -y wget \
 COPY pom.xml ./
 RUN mvn dependency:go-offline
 
+COPY .env /app/.env
 COPY src ./src
 RUN mvn clean package -DskipTests
 
@@ -29,6 +30,4 @@ FROM openjdk:21-jdk-slim
 WORKDIR /app
 COPY --from=builder /app/target/OrderService-1.0-SNAPSHOT.jar OrderService-1.0-SNAPSHOT.jar
 
-# Set the entrypoint and default command
-ENTRYPOINT ["java", "-cp", "OrderService-1.0-SNAPSHOT.jar", "Main"]
-CMD ["grpc"]
+ENTRYPOINT ["java", "-jar", "OrderService-1.0-SNAPSHOT.jar", "Main"]
