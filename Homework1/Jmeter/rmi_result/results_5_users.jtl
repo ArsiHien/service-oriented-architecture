@@ -1,0 +1,6 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1740884623758,160,JavaRMI,,,5 concerrent Users 1-3,,true,,23,0,3,3,null,0,0,0
+1740884623476,442,JavaRMI,,,5 concerrent Users 1-1,,true,,31,0,3,3,null,0,0,0
+1740884623557,361,JavaRMI,,,5 concerrent Users 1-2,,true,,31,0,3,3,null,0,0,0
+1740884623958,25,JavaRMI,,,5 concerrent Users 1-4,,true,,31,0,1,1,null,0,0,0
+1740884624156,23,JavaRMI,,,5 concerrent Users 1-5,,true,,22,0,1,1,null,0,0,0

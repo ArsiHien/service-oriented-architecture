@@ -1,0 +1,34 @@
+{
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 100,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 16.259999999999998,
+    "medianResTime" : 14.0,
+    "minResTime" : 11.0,
+    "maxResTime" : 33.0,
+    "pct1ResTime" : 26.900000000000006,
+    "pct2ResTime" : 29.0,
+    "pct3ResTime" : 32.989999999999995,
+    "throughput" : 102.14504596527068,
+    "receivedKBytesPerSec" : 2.432927413176711,
+    "sentKBytesPerSec" : 0.0
+  },
+  "Thrift" : {
+    "transaction" : "Thrift",
+    "sampleCount" : 100,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 16.259999999999998,
+    "medianResTime" : 14.0,
+    "minResTime" : 11.0,
+    "maxResTime" : 33.0,
+    "pct1ResTime" : 26.900000000000006,
+    "pct2ResTime" : 29.0,
+    "pct3ResTime" : 32.989999999999995,
+    "throughput" : 102.14504596527068,
+    "receivedKBytesPerSec" : 2.432927413176711,
+    "sentKBytesPerSec" : 0.0
+  }
+}

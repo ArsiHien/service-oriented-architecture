@@ -1,0 +1,34 @@
+{
+  "JavaRMI" : {
+    "transaction" : "JavaRMI",
+    "sampleCount" : 50,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 20.160000000000007,
+    "medianResTime" : 16.0,
+    "minResTime" : 11.0,
+    "maxResTime" : 56.0,
+    "pct1ResTime" : 51.699999999999996,
+    "pct2ResTime" : 54.89999999999999,
+    "pct3ResTime" : 56.0,
+    "throughput" : 55.43237250554324,
+    "receivedKBytesPerSec" : 1.3067748752771617,
+    "sentKBytesPerSec" : 0.0
+  },
+  "Total" : {
+    "transaction" : "Total",
+    "sampleCount" : 50,
+    "errorCount" : 0,
+    "errorPct" : 0.0,
+    "meanResTime" : 20.160000000000007,
+    "medianResTime" : 16.0,
+    "minResTime" : 11.0,
+    "maxResTime" : 56.0,
+    "pct1ResTime" : 51.699999999999996,
+    "pct2ResTime" : 54.89999999999999,
+    "pct3ResTime" : 56.0,
+    "throughput" : 55.43237250554324,
+    "receivedKBytesPerSec" : 1.3067748752771617,
+    "sentKBytesPerSec" : 0.0
+  }
+}
