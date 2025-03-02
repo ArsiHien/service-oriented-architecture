@@ -31,7 +31,6 @@ public class GrpcJmeterClient extends AbstractJavaSamplerClient {
         }
 
         stub = OrderServiceGrpc.newBlockingStub(channel);
-        System.out.println("Connected to server");
     }
 
     @Override

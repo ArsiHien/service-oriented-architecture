@@ -19,7 +19,6 @@ public class JavaRmiJmeterClient extends AbstractJavaSamplerClient {
         try {
             Registry registry = LocateRegistry.getRegistry(Const.SERVER, 1099);
             orderService = (OrderService) registry.lookup("orderService");
-            System.out.println("Connected to RMI server successfully.");
 
             if (csvHelper == null) {
                 try {
